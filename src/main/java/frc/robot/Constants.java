@@ -4,7 +4,11 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.sensors.PigeonIMU;
+
 import edu.wpi.first.hal.simulation.DIODataJNI;
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -28,6 +32,19 @@ public final class Constants {
         public static final double kPTurning = 0.5;
 
           }
+
+    public static final class DriveConstants {
+
+      public static final double kTrackWidth = Units.inchesToMeters(21);
+      //distance between right and left wheel 
+      public static final double kWheelBase = Units.inchesToMeters(25.5);
+      //distance front to back
+      public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
+              new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
+              new Translation2d(kWheelBase / 2, kTrackWidth / 2),
+              new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
+              new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
+    }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
