@@ -1,0 +1,12 @@
+Back Right Drive = 1
+Back Left Turn = 2
+Back Left Drive = 3
+Front Left Turn = 4
+Front Left Drive = 5
+Front Right Drive = 6
+Front Right Turn = 7
+Back Right Turn = 8
+Front Left Sensor = 9
+Front Right Sensor = 10
+Back Left Sensor = 11
+Back Right Sensor = 12
