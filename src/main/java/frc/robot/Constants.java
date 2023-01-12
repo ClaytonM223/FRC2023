@@ -21,29 +21,67 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
 
+    public final class USB{
+      public static final int DRIVER_CONTROLLER = 0;
+      public static final int OPERATOR_CONTROLLER = 1;
+    }
+
     public static final class ModuleConstants{
-        public static final double kWheelDiameterMeters = Units.inchesToMeters(4);
-        public static final double kDriveMotorGearRatio = 1 / 5.8462;
-        public static final double kTurningMotorGearRatio = 1 / 18.0;
+        public static final double kWheelDiameterMeters = .10;
+        public static final double kDriveMotorGearRatio = 1 / 6.75;
+        public static final double kTurningMotorGearRatio = 1 / 7;
         public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
         public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
         public static final double kDriveEncoderRPM2RadPerSec = kDriveEncoderRot2Meter / 60;
         public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
         public static final double kPTurning = 0.5;
+      }
 
-          }
+    public final class sensors{
+      public static final int GYRO_ID = 13;
+    }
 
     public static final class DriveConstants {
 
-      public static final double kTrackWidth = Units.inchesToMeters(21);
+      public static final double kTrackWidth = Units.inchesToMeters(25.25);
       //distance between right and left wheel 
-      public static final double kWheelBase = Units.inchesToMeters(25.5);
+      public static final double kWheelBase = Units.inchesToMeters(25.25);
       //distance front to back
       public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
               new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
               new Translation2d(kWheelBase / 2, kTrackWidth / 2),
               new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
               new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
+
+      public static final int kFrontLeftDriveMotorPort = 5;
+      public static final int kFrontLeftTurningMotorPort = 4;
+
+      public static final int kBackLeftDriveMotorPort = 3;
+      public static final int kBackLeftTurningMotorPort = 2;
+       
+      public static final int kFrontRightDriveMotorPort = 6;
+      public static final int kFrontRightTurningMotorPort = 7;
+
+      public static final int kBackRightDriveMotorPort = 1;
+      public static final int kBackRightTurningMotorPort = 8;
+
+      public static final boolean kFrontRightTurningEncoderReversed = true;
+      public static final boolean kBackRightTurningEncoderReversed = true;
+      public static final boolean kFrontLeftTurningEncoderReversed = true;
+      public static final boolean kBackLeftTurningEncoderReversed = true;
+
+      public static final boolean kFrontRightDriveEncoderReversed = false;
+      public static final boolean kBackRightDriveEncoderReversed = false;
+      public static final boolean kFrontLeftDriveEncoderReversed = true;
+      public static final boolean kBackLeftDriveEncoderReversed = true;
+
+      public static final int kFrontRightDriveAbsoluteEncoderPort = 10;
+      public static final int kFrontLeftDriveAbsoluteEncoderPort = 9;
+      public static final int kBackRightDriveAbsoluteEncoderPort = 12;
+      public static final int kBackLeftDriveAbsoluteEncoderPort = 11;
+
+
+
     }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
