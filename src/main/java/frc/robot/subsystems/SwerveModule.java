@@ -24,11 +24,11 @@ public class SwerveModule {
 
     private final CANCoder absoluteEncoder;
     private final boolean absoluteEncoderReversed;
-    private final double absoluteEncoderOffsetDeg;
+    private final double absoluteEncoderOffsetRad;
 
     public SwerveModule(int driveMotorId, int turnMotorId, boolean driveMotorReversed, boolean turnMotorReversed,
             int absoluteEncoderId, double absoluteEncoderOffset, boolean isAbsoluteEncoderReversed){
-        this.absoluteEncoderOffsetDeg = absoluteEncoderOffset;
+        this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
         this.absoluteEncoderReversed = isAbsoluteEncoderReversed;
         absoluteEncoder = new CANCoder(absoluteEncoderId);
 
@@ -47,7 +47,7 @@ public class SwerveModule {
         turnEncoder.setVelocityConversionFactor(ModuleConstants.kTurnEncoderRPM2RadPerSec);
 
         turnPidController = new PIDController(ModuleConstants.kPTurning, 0, 0);
-        turnPidController.enableContinuousInput(-360, 360);
+        turnPidController.enableContinuousInput(-Math.PI, Math.PI);
 
         resetEncoders();
     }
@@ -68,15 +68,15 @@ public class SwerveModule {
         return turnEncoder.getVelocity();
     }
 
-    public double getAbsoluteEncoderDeg() {
-        double angle = absoluteEncoder.getAbsolutePosition();
-        angle -= absoluteEncoderOffsetDeg;
+    public double getAbsoluteEncoderRad() {
+        double angle = (absoluteEncoder.getAbsolutePosition() * Math.PI / 180);
+        angle -= absoluteEncoderOffsetRad;
         return angle * (absoluteEncoderReversed ? -1.0 : 1.0);
     }
 
     public void resetEncoders() {
         driveEncoder.setPosition(0);
-        turnEncoder.setPosition(getAbsoluteEncoderDeg());
+        turnEncoder.setPosition(getAbsoluteEncoderRad());
     }
 
     public SwerveModuleState getState() {
@@ -92,9 +92,12 @@ public class SwerveModule {
         driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
         turnMotor.set(turnPidController.calculate(getTurningPosition(), state.angle.getDegrees()));
     }
+    
 
     public void stop() {
         driveMotor.set(0);
         turnMotor.set(0);
     }
+
+
 }

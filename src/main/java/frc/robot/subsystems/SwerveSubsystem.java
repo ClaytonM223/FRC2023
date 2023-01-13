@@ -6,6 +6,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.Sensors;
 
@@ -63,7 +64,7 @@ public class SwerveSubsystem extends SubsystemBase {
     }
 
     public double getHeading(){
-        return Math.IEEEremainder(gyro.getYaw(), 360);
+        return gyro.getYaw();
     }
 
     public Rotation2d getRotation2d(){
@@ -73,6 +74,12 @@ public class SwerveSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Robot Heading", getHeading());
+        SmartDashboard.putNumber("Turn Angle", frontLeft.getAbsoluteEncoderRad());
+        SmartDashboard.putNumber("Turn Motor Angle", frontLeft.getTurningPosition());
+        if (RobotContainer.driverController.getBButton()){
+            zeroHeading();
+        }
+
     }
 
     public void stopModules() {

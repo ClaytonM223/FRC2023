@@ -18,8 +18,8 @@ import frc.robot.subsystems.SwerveSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
-  private final XboxController driverController = new XboxController(OIConstants.kDriverControllerPort);
+  public final static SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+  public final static XboxController driverController = new XboxController(OIConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -29,9 +29,7 @@ public class RobotContainer {
      () -> driverController.getRawAxis(OIConstants.kDriverRotAxis), 
      () -> !driverController.getAButton()));
 
-    if (driverController.getBButton()){
-      swerveSubsystem.zeroHeading();
-    }
+
 
     // Configure the button bindings
     configureBindings();

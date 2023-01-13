@@ -26,8 +26,8 @@ public final class Constants {
 
     public final class ModuleConstants{
         public static final double kWheelDiameterMeters = 0.10;
-        public static final double kDriveMotorGearRatio = 1 / 6.75;
-        public static final double kTurningMotorGearRatio = 1 / 7;
+        public static final double kDriveMotorGearRatio = 6.75;
+        public static final double kTurningMotorGearRatio = 1 / 21.42857142857143;
         public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
         public static final double kTurnEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
         public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
@@ -57,8 +57,8 @@ public final class Constants {
         public static final int kBackLeftDriveMotorPort = 3;
         public static final int kBackLeftTurningMotorPort = 2;
 
-        public static final int kFrontRightDriveMotorPort = 6;
-        public static final int kFrontRightTurningMotorPort = 7;
+        public static final int kFrontRightDriveMotorPort = 7;
+        public static final int kFrontRightTurningMotorPort = 6;
 
         public static final int kBackRightDriveMotorPort = 1;
         public static final int kBackRightTurningMotorPort = 8;
@@ -78,10 +78,10 @@ public final class Constants {
         public static final int kFrontRightDriveAbsoluteEncoderPort = 10;
         public static final int kBackRightDriveAbsoluteEncoderPort = 12;
 
-        public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = true;
-        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = true;
-        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
-        public static final boolean kBackRightDriveAbsoluteEncoderReversed = true;
+        public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
+        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
+        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
+        public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
         public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.254;
         public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -1.252;
