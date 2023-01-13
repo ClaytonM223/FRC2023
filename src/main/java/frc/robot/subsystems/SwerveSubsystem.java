@@ -73,9 +73,11 @@ public class SwerveSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        SmartDashboard.putNumber("Robot Heading", getHeading());
-        SmartDashboard.putNumber("Turn Angle", frontLeft.getAbsoluteEncoderRad());
-        SmartDashboard.putNumber("Turn Motor Angle", frontLeft.getTurningPosition());
+        SmartDashboard.putNumber("Robot Heading", getHeading());;
+        SmartDashboard.putNumber("Front Left Turn Angle", frontLeft.getAbsoluteEncoderRad());
+        SmartDashboard.putNumber("Back Left Turn Angle", backLeft.getAbsoluteEncoderRad());
+        SmartDashboard.putNumber("Front Right Turn Angle", frontRight.getAbsoluteEncoderRad());
+        SmartDashboard.putNumber("Back Right Turn Angle", backRight.getAbsoluteEncoderRad());
         if (RobotContainer.driverController.getBButton()){
             zeroHeading();
         }
