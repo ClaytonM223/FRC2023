@@ -64,7 +64,8 @@ public class SwerveSubsystem extends SubsystemBase {
     }
 
     public double getHeading(){
-        return gyro.getYaw();
+        return Math.IEEEremainder(gyro.getYaw(), 360);
+        //return gyro.getYaw();
     }
 
     public Rotation2d getRotation2d(){
@@ -78,6 +79,7 @@ public class SwerveSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Back Left Turn Angle", backLeft.getAbsoluteEncoderRad());
         SmartDashboard.putNumber("Front Right Turn Angle", frontRight.getAbsoluteEncoderRad());
         SmartDashboard.putNumber("Back Right Turn Angle", backRight.getAbsoluteEncoderRad());
+        SmartDashboard.putNumber("Test", frontLeft.getTurningPosition());
         if (RobotContainer.driverController.getBButton()){
             zeroHeading();
         }
