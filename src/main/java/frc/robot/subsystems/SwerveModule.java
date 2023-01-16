@@ -93,7 +93,6 @@ public class SwerveModule {
         turnMotor.set(turnPidController.calculate(getTurningPosition(), state.angle.getRadians()));
         //turnMotor.set(turnPidController.calculate(getTurningPosition(), state.angle.getDegrees()));
     }
-    
 
     public void stop() {
         driveMotor.set(0);

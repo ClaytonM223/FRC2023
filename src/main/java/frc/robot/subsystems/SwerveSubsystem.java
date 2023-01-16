@@ -85,6 +85,9 @@ public class SwerveSubsystem extends SubsystemBase {
         }
 
     }
+    public void zeroTurn(){
+        
+    }
 
     public void stopModules() {
         frontLeft.stop();
