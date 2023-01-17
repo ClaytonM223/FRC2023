@@ -4,11 +4,9 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.sensors.PigeonIMU;
-
-import edu.wpi.first.hal.simulation.DIODataJNI;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -90,8 +88,17 @@ public final class Constants {
       public static final double kBackRightDriveEncoderOffsetRad = 2.828;
       public static final double kBackLeftDriveEncoderOffsetRad = 2.230;
 
+      public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
+      public static final double kPhysicalMaxAngularSpeedRadiansPerSeconds = 2 * 2 * Math.PI;
 
+      public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 8;
+      public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSeconds / 4;
+      public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
+      public static final double kTeleDriveMaxAngularAccelerationUnitsPerSeconds = 3;
+ }
 
+    public static final class AutoConstants{
+      
     }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
