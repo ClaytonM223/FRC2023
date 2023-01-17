@@ -8,6 +8,7 @@ import com.revrobotics.SparkMaxRelativeEncoder.Type;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.ModuleConstants;
@@ -55,7 +56,7 @@ public class SwerveModule {
     public double getDrivePosition() {
         return driveEncoder.getPosition();
     }
-
+    
     public double getTurningPosition() {
         return turnEncoder.getPosition();
     }
@@ -81,6 +82,10 @@ public class SwerveModule {
 
     public SwerveModuleState getState() {
         return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getTurningPosition()));
+    }
+
+    public void getModulePosition(SwerveModulePosition position){
+        position = new SwerveModulePosition(driveEncoder.getPosition(), new Rotation2d(getTurningPosition()));
     }
 
     public void setDesiredState(SwerveModuleState state) {
