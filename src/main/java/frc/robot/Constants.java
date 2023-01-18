@@ -94,11 +94,11 @@ public final class Constants {
       public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 8;
       public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSeconds / 4;
       public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
-      public static final double kTeleDriveMaxAngularAccelerationUnitsPerSeconds = 3;
+      public static final double kTeleDriveMaxAngularAccelerationUnitsPerSeconds = 3; 
  }
 
     public static final class AutoConstants{
-      
+
     }
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
