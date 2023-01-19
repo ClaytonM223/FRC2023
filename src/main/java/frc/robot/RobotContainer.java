@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
@@ -38,11 +39,7 @@ public class RobotContainer {
             () -> -driverController.getRawAxis(OIConstants.kDriverYAxis),
             () -> driverController.getRawAxis(OIConstants.kDriverXAxis),
             () -> driverController.getRawAxis(OIConstants.kDriverRotAxis),
-            () -> !driverController.getAButton()));     
-
-            if (driverController.getBButton()) {
-              swerveSubsystem.zeroHeading();
-            }
+            () -> !driverController.getAButton()));
     // Configure the trigger bindings
     configureBindings();
   }
