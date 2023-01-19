@@ -7,6 +7,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.ModuleConstants;
 
 public class SwerveSubsystem extends SubsystemBase {
     private final SwerveModule frontLeft = new SwerveModule(
@@ -15,7 +16,7 @@ public class SwerveSubsystem extends SubsystemBase {
         DriveConstants.kFrontLeftDriveEncoderReversed,
         DriveConstants.kFrontLeftDriveAbsoluteEncoderPort,
         DriveConstants.kFrontLeftDriveAbsoluteEncoderOffsetRad,
-        DriveConstants.kFrontLeftDriveabsoluteEncoderReversed);
+        DriveConstants.kFrontLeftDriveAbsoluteEncoderReversed);
 
     private final SwerveModule frontRight = new SwerveModule(
         DriveConstants.kFrontRightDriveMotorPort,
@@ -23,7 +24,7 @@ public class SwerveSubsystem extends SubsystemBase {
         DriveConstants.kFrontRightDriveEncoderReversed,
         DriveConstants.kFrontRightDriveAbsoluteEncoderPort,
         DriveConstants.kFrontRightDriveAbsoluteEncoderOffsetRad,
-        DriveConstants.kFrontRightDriveabsoluteEncoderReversed);
+        DriveConstants.kFrontRightDriveAbsoluteEncoderOffsetRad);
 
     private final SwerveModule backLeft = new SwerveModule(
         DriveConstants.kBackLeftDriveMotorPort,
@@ -31,7 +32,7 @@ public class SwerveSubsystem extends SubsystemBase {
         DriveConstants.kBackLeftDriveEncoderReversed,
         DriveConstants.kBackLeftDriveAbsoluteEncoderPort,
         DriveConstants.kBackLeftDriveAbsoluteEncoderOffsetRad,
-        DriveConstants.kBackLeftDriveabsoluteEncoderReversed);
+        DriveConstants.kBackLeftDriveAbsoluteEncoderReversed);
     
     private final SwerveModule backRight = new SwerveModule(
         DriveConstants.kBackRightDriveMotorPort,
@@ -39,7 +40,7 @@ public class SwerveSubsystem extends SubsystemBase {
         DriveConstants.kBackRightDriveEncoderReversed,
         DriveConstants.kBackRightDriveAbsoluteEncoderPort,
         DriveConstants.kBackRightDriveAbsoluteEncoderOffsetRad,
-        DriveConstants.kBackRightDriveabsoluteEncoderReversed);
+        DriveConstants.kBackRightDriveAbsoluteEncoderReversed);
 
     private final AHRS gyro = new AHRS(SPI.Port.kMXP);
 

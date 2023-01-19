@@ -54,8 +54,7 @@ public class SwerveJoystickCmd extends CommandBase {
         //3. Make the driving smother
         xSpeed = xLimiter.calculate(xSpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
         yspeed = yLimiter.calculate(yspeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
-        turningSpeed = turningLimiter.calculate(turningSpeed)
-                * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
+        turningSpeed = turningLimiter.calculate(turningSpeed) * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
 
         //4. Chassis speeds
         ChassisSpeeds chassisSpeeds;
@@ -69,7 +68,7 @@ public class SwerveJoystickCmd extends CommandBase {
         }
 
         //5. Convert chassis speeds to individual module states
-        SwerveSubsystem[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
+        SwerveModuleState[] moduleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
 
         //6. Output to the wheels 
         swerveSubsystem.setModuleStates(moduleStates);
