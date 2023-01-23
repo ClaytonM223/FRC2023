@@ -6,20 +6,19 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.SwerveSubsystem;
 
 
-public class SwerveJoystickCmd extends CommandBase {
+public class SwerveJoystick extends CommandBase {
 
     private final SwerveSubsystem swerveSubsystem;
     private final Supplier<Double> xSpdFunction, ySpdFunction, turningSpdFunction;
     private final Supplier<Boolean> fieldOrientationFunction;
     private final SlewRateLimiter xLimiter, yLimiter, turningLimiter;
 
-    public SwerveJoystickCmd(SwerveSubsystem swerveSubsystem,
+    public SwerveJoystick(SwerveSubsystem swerveSubsystem,
             Supplier<Double> xSpdFunction, Supplier<Double> ySpdFunction, Supplier<Double> turningSpdFunction,
             Supplier<Boolean> fieldOrientationFunction) {
        

@@ -1,45 +1,45 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.sensors.CANCoder;
-import com.revrobotics.AnalogInput;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkMaxRelativeEncoder.Type;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxRelativeEncoder.Type;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import frc.robot.Constants.ModuleConstants;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.ModuleConstants;
+
 
 public class SwerveModule {
 
     private final CANSparkMax driveMotor;
-    private final CANSparkMax turningMotor;
+    private final CANSparkMax turnMotor;
 
     private final RelativeEncoder driveEncoder;
     private final RelativeEncoder turningEncoder;
 
     private final PIDController turningPidController;
 
-    private final AnalogInput absoluteEncoder;
+    private final CANCoder absoluteEncoder;
     private final boolean absoluteEncoderReversed;
     private final double absoluteEncoderOffsetRad;
 
-    public SwerveModule(int driveMotorId, int turningMotorId, boolean driveMotorReversed, boolean turningMotorReversed,
-            int absoluteEncoderId, double absoluteEncoderOffset, boolean absoluteEncoderReversed) {
+    public SwerveModule(int driveMotorId, int turnMotorId, boolean driveMotorReversed, boolean turnMotorReversed, int absoluteEncoderId, double absoluteEncoderOffset, boolean absoluteEncoderReversed) {
         this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
         this.absoluteEncoderReversed = absoluteEncoderReversed;
         absoluteEncoder = new CANCoder(absoluteEncoderId);
 
         driveMotor = new CANSparkMax(driveMotorId, MotorType.kBrushless);
-        turningMotor = new CANSparkMax(turningMotorId, MotorType.kBrushless);
+        turnMotor = new CANSparkMax(turnMotorId, MotorType.kBrushless);
 
         driveMotor.setInverted(driveMotorReversed);
-        turningMotor.setInverted(turningMotorReversed);
+        turnMotor.setInverted(turnMotorReversed);
 
         driveEncoder = driveMotor.getEncoder(Type.kHallSensor, 42);
-        turningEncoder = turningMotor.getEncoder(Type.kHallSensor, 42);
+        turningEncoder = turnMotor.getEncoder(Type.kHallSensor, 42);
 
         driveEncoder.setPositionConversionFactor(ModuleConstants.kDriveEncoderRot2Meter);
         driveEncoder.setVelocityConversionFactor(ModuleConstants.kDriveEncoderRPM2MeterPerSec);
@@ -91,12 +91,12 @@ public class SwerveModule {
         
         state = SwerveModuleState.optimize(state, getState().angle);
         driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
-        turningMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians())); 
+        turnMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians())); 
     
     }
 
     public void stop() {
         driveMotor.set(0);
-        turningMotor.set(0);
+        turnMotor.set(0);
     }
 }
