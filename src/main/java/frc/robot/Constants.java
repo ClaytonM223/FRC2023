@@ -18,7 +18,6 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    haha error go brrt
     public final class USB{
       public static final int DRIVER_CONTROLLER = 0;
       public static final int OPERATOR_CONTROLLER = 1;
