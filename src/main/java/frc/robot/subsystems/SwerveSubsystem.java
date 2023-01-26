@@ -70,6 +70,10 @@ public class SwerveSubsystem extends SubsystemBase {
             try {
                 Thread.sleep(1000);
                 zeroHeading();
+                frontLeft.resetTurn();
+                frontRight.resetTurn();
+                backLeft.resetTurn();
+                backRight.resetTurn();
             }catch (Exception e) {
             }
         }).start();
@@ -110,6 +114,7 @@ public class SwerveSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Front Right Turn Angle", frontRight.getAbsoluteEncoderRad());
         SmartDashboard.putNumber("Back Right Turn Angle", backRight.getAbsoluteEncoderRad());
         SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
+        SmartDashboard.putNumber("Back Left Turn Motor Position", backLeft.getTurningPosition());
         if (RobotContainer.driverController.getBButton()){
             zeroHeading();
         }

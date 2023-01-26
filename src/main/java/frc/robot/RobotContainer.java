@@ -19,6 +19,7 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.SwerveJoystick;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.SwerveSubsystem;
 
 /**
@@ -30,6 +31,7 @@ import frc.robot.subsystems.SwerveSubsystem;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public final static SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+  public final static Limelight limelight = new Limelight();
   public final static XboxController driverController = new XboxController(OIConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -67,6 +69,7 @@ public class RobotContainer {
       AutoConstants.kMaxAccelerationMetersPerSecondSquared).setKinematics(DriveConstants.kDriveKinematics);
 
     // 2. Generate trajectory
+    /*
     Trajectory trajectory = new TrajectoryGenerator.generateTrajectory(
       new Pose2d(0, 0, new Rotation2d(0)),
       List.of(
@@ -76,6 +79,8 @@ public class RobotContainer {
       new Pose2d(2, -1, Rotation2d.fromDegrees(180)), 
       trajectoryConfig
     );
+    */
     return null;
   }
+  
 }
