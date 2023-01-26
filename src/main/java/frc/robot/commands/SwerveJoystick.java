@@ -59,6 +59,13 @@ public class SwerveJoystick extends CommandBase {
     ySpeed = yLimiter.calculate(ySpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
     turningSpeed = turningLimiter.calculate(turningSpeed) * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
 
+    // Create slow button
+    if(RobotContainer.driverController.getLeftBumper()){
+      xSpeed = xSpeed * DriveConstants.slowButtonDriveModifier;
+      ySpeed = ySpeed * DriveConstants.slowButtonDriveModifier;
+      turningSpeed = turningSpeed * DriveConstants.slowButtonTurnModifier;
+    }
+
     // 4. Construct desired chassis speeds
     ChassisSpeeds chassisSpeeds;
     if (fieldOritentedFunction.get()) {

@@ -21,7 +21,7 @@ public final class Constants {
 
     public final class USB{
         public static final int DRIVER_CONTROLLER = 0;      // Driver Controller USB ID
-        public static final int OPERATOR_CONTROLLER = 0;    // Operator controller USB ID
+        public static final int OPERATOR_CONTROLLER = 1;    // Operator controller USB ID
     }
 
     public final class ModuleConstants{
@@ -95,6 +95,9 @@ public final class Constants {
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 2;
         public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
         public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;
+
+        public static final double slowButtonDriveModifier = 0.5;
+        public static final double slowButtonTurnModifier = 0.5;
     }
 
     public static final class AutoConstants {
@@ -120,7 +123,7 @@ public final class Constants {
         public static final int kDriverRotAxis = 4;
         public static final int kDriverFieldOrientedButtonIdx = 1;
 
-        public static final double kDeadband = 0.05;
+        public static final double kDeadband = 0.08;
     }
 
 }
