@@ -28,6 +28,8 @@ public class SwerveModule {
 
     public SwerveModule(int driveMotorId, int turnMotorId, boolean driveMotorReversed, boolean turnMotorReversed,
             int absoluteEncoderId, double absoluteEncoderOffset, boolean isAbsoluteEncoderReversed){
+        
+
         this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
         this.absoluteEncoderReversed = isAbsoluteEncoderReversed;
         absoluteEncoder = new CANCoder(absoluteEncoderId);
@@ -38,6 +40,9 @@ public class SwerveModule {
         driveMotor.setInverted(driveMotorReversed);
         turnMotor.setInverted(turnMotorReversed);
 
+        driveMotor.restoreFactoryDefaults();
+        turnMotor.restoreFactoryDefaults();
+        
         driveEncoder = driveMotor.getEncoder(Type.kHallSensor, 42);
         turnEncoder = turnMotor.getEncoder(Type.kHallSensor, 42);
 
