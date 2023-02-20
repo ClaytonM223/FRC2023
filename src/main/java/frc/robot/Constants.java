@@ -80,10 +80,10 @@ public final class Constants {
         public static final int kBackRightDriveMotorPort = 4;
         public static final int kBackRightTurningMotorPort = 3;
 
-        public static final boolean kFrontLeftTurningEncoderReversed = false;
-        public static final boolean kBackLeftTurningEncoderReversed = false;
-        public static final boolean kFrontRightTurningEncoderReversed = false;
-        public static final boolean kBackRightTurningEncoderReversed = false;
+        public static final boolean kFrontLeftTurningEncoderReversed = true;
+        public static final boolean kBackLeftTurningEncoderReversed = true;
+        public static final boolean kFrontRightTurningEncoderReversed = true;
+        public static final boolean kBackRightTurningEncoderReversed = true;
 
         public static final boolean kFrontLeftDriveEncoderReversed = false;
         public static final boolean kBackLeftDriveEncoderReversed = false;
@@ -100,8 +100,8 @@ public final class Constants {
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 0;
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 0;
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 2.244;
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 4.040;
         public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0;
         public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0;
 
