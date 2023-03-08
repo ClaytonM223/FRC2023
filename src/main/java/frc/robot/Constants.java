@@ -28,17 +28,56 @@ public final class Constants {
         public static final int OPERATOR_RX = 4;
     }
 
-    public final class ARM{
-        public static final int LEFT_SHOULDER = 9;
-        public static final int RIGHT_SHOULDER = 10;
-        public static final int ELBOW = 11;
+    public final class CLAW{
+        public static final int ID = 13;
+        public static final double MAX_SPEED = 0.2;
+        public static final double POSITION_TOLERANCE = 0.002;
+        public static final double CLOSED_POSITION = 0.02;
+        public static final double OPEN_POSITION = 0.3;
+        
+        public static final double kP = 0.8;
+        public static final double kI = 0.8;
+        public static final double kD = 0.05;
+    }
 
-        public static final boolean LEFT_SHOULDER_INVERTED = false;
-        public static final boolean RIGHT_SHOULDER_INVERTED = true;
-        public static final boolean ELBOW_INVERTED = false;
+    public final class WRIST{
+        public static final int ID = 12;
+        public static final double MAX_SPEED = 0.3;
+        public static final double POSITION_TOLERANCE = 0.05;
+        public static final double UP_POSITION = -9;
+        public static final double DOWN_POSITION = 0;
+                
+        public static final double kP = 0;
+        public static final double kI = 0;
+        public static final double kD = 0;
+    }
 
-        public static final double SHOULDER_MAX_SPEED = 0.1;
-        public static final double ELBOW_MAX_SPEED = 0.1;
+    public final class ELBOW{
+        public static final int ID = 11;
+        public static final boolean INVERTED = false;
+        public static final double MAX_SPEED = 0.4;
+        public static final double POSITION_TOLERANCE = 0.05;
+        public static final double UP_POSITION = -9;
+        public static final double DOWN_POSITION = 0;
+                
+        public static final double kP = 0;
+        public static final double kI = 0;
+        public static final double kD = 0;
+    }
+
+    public final class SHOULDER{
+        public static final int LEFT = 9;
+        public static final int RIGHT = 10;
+        public static final boolean LEFT_INVERTED = false;
+        public static final boolean RIGHT_INVERTED = true;
+        public static final double MAX_SPEED = 0.2;
+        public static final double POSITION_TOLERANCE = 0.05;
+        public static final double UP_POSITION = -9;
+        public static final double DOWN_POSITION = 0;
+                
+        public static final double kP = 0;
+        public static final double kI = 0;
+        public static final double kD = 0;
     }
 
     public final class ModuleConstants{
@@ -80,35 +119,35 @@ public final class Constants {
         public static final int kBackRightDriveMotorPort = 4;
         public static final int kBackRightTurningMotorPort = 3;
 
-        public static final boolean kFrontLeftTurningEncoderReversed = true;
-        public static final boolean kBackLeftTurningEncoderReversed = true;
-        public static final boolean kFrontRightTurningEncoderReversed = true;
-        public static final boolean kBackRightTurningEncoderReversed = true;
+        public static final boolean kFrontLeftTurningEncoderReversed = false;
+        public static final boolean kBackLeftTurningEncoderReversed = false;
+        public static final boolean kFrontRightTurningEncoderReversed = false;
+        public static final boolean kBackRightTurningEncoderReversed = false;
 
-        public static final boolean kFrontLeftDriveEncoderReversed = false;
-        public static final boolean kBackLeftDriveEncoderReversed = false;
-        public static final boolean kFrontRightDriveEncoderReversed = false;
-        public static final boolean kBackRightDriveEncoderReversed = false;
+        public static final boolean kFrontLeftDriveReversed = false;
+        public static final boolean kBackLeftDriveReversed = false;
+        public static final boolean kFrontRightDriveReversed = true;
+        public static final boolean kBackRightDriveReversed = true;
 
         public static final int kFrontLeftDriveAbsoluteEncoderPort = 12;
         public static final int kBackLeftDriveAbsoluteEncoderPort = 14;
         public static final int kFrontRightDriveAbsoluteEncoderPort = 13;
         public static final int kBackRightDriveAbsoluteEncoderPort = 15;
 
-        public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
-        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
-        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
-        public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
+        public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = true;
+        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = true;
+        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
+        public static final boolean kBackRightDriveAbsoluteEncoderReversed = true;
 
         public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = 2.244;
         public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = 4.040;
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 0;
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0;
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 5.355;
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.179;
 
         public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
 
-        public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 8;
+        public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 2;
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
         public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
         public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;

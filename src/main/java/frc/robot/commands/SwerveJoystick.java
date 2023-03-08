@@ -20,6 +20,7 @@ public class SwerveJoystick extends CommandBase {
   private final SwerveSubsystem swerveSubsystem;
   private final Supplier<Double> xSpdFunction, ySpdFunction, turningSpdFunction;
   private final Supplier<Boolean> fieldOritentedFunction;
+
   private final SlewRateLimiter xLimiter, yLimiter, turningLimiter;
   /** Creates a new SwerveJoystick. */
   public SwerveJoystick(SwerveSubsystem swerveSubsystem, Supplier<Double> xSpdFunction, Supplier<Double> ySpdFunction, 
@@ -30,6 +31,8 @@ public class SwerveJoystick extends CommandBase {
       this.ySpdFunction = ySpdFunction;
       this.turningSpdFunction = turningSpdFuntion;
       this.fieldOritentedFunction = fieldOrientedFunction;
+
+  
       this.xLimiter = new SlewRateLimiter(DriveConstants.kTeleDriveMaxAccelerationUnitsPerSecond);
       this.yLimiter = new SlewRateLimiter(DriveConstants.kTeleDriveMaxAccelerationUnitsPerSecond);
       this.turningLimiter = new SlewRateLimiter(DriveConstants.kTeleDriveMaxAccelerationUnitsPerSecond);
@@ -55,9 +58,11 @@ public class SwerveJoystick extends CommandBase {
     turningSpeed = Math.abs(turningSpeed) > OIConstants.kDeadband ? turningSpeed : 0.0;
 
     // 3. Make the driving smoother
+  
     xSpeed = xLimiter.calculate(xSpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
     ySpeed = yLimiter.calculate(ySpeed) * DriveConstants.kTeleDriveMaxSpeedMetersPerSecond;
     turningSpeed = turningLimiter.calculate(turningSpeed) * DriveConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
+
 
     // 4. Construct desired chassis speeds
     ChassisSpeeds chassisSpeeds;
