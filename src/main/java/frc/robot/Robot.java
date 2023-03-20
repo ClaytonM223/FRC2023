@@ -4,6 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -19,6 +23,8 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  public static final AddressableLED m_led = new AddressableLED(0);
+  public static final AddressableLEDBuffer m_ledBuffer = new AddressableLEDBuffer(100);
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -28,6 +34,16 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    // Reuse buffer
+    // Default to a length of 60, start empty output
+    // Length is expensive to set, so only set it once, then just update data
+    m_led.setLength(m_ledBuffer.getLength());
+
+    // Set the data
+    m_led.setData(m_ledBuffer);
+    m_led.start();
+
+    CameraServer.startAutomaticCapture(0);
   }
 
   /**
@@ -44,6 +60,13 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+
+    for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+      // Sets the specified LED to the RGB values for red
+      m_ledBuffer.setRGB(i, 255, 0, 0);
+   }
+   
+   m_led.setData(m_ledBuffer);
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

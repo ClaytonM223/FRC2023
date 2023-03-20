@@ -6,7 +6,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.CLAW;
 import frc.robot.Constants.ELBOW;
 import frc.robot.Constants.SHOULDER;
 import frc.robot.Constants.USB;
@@ -31,8 +30,16 @@ public class ArmControl extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RY) * WRIST.MAX_SPEED);
-    RobotContainer.arm.moveElbow(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LY) * ELBOW.MAX_SPEED);
+    RobotContainer.arm.moveShoulder(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LY) * SHOULDER.MAX_SPEED);
+    RobotContainer.arm.moveWrist(-(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) * WRIST.MAX_SPEED));
+    RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) * -WRIST.MAX_SPEED);
+    RobotContainer.arm.moveElbow(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RY) * ELBOW.MAX_SPEED);
+
+    if(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) > 0.05){
+      RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) * WRIST.MAX_SPEED);
+    }else if(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) > 0.05){
+      RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) * -WRIST.MAX_SPEED);
+    }
 
     if(RobotContainer.operatorController.getStartButton()){
       RobotContainer.arm.resetPositionAll();
@@ -48,11 +55,19 @@ public class ArmControl extends CommandBase {
       //RobotContainer.arm.clawPIDPosition(CLAW.CLOSED_POSITION);
     }
 
-    if(RobotContainer.operatorController.getXButton()){
-      RobotContainer.arm.moveShoulder(-SHOULDER.MAX_SPEED);
-    }else if(RobotContainer.operatorController.getYButton()){
+    if(RobotContainer.operatorController.getXButtonPressed()){
+      RobotContainer.arm.moveShoulder(-0.2);
+    }
+
+    if(RobotContainer.operatorController.getXButtonReleased()){
+      RobotContainer.arm.moveShoulder(0);
+    }
+
+    if(RobotContainer.operatorController.getYButtonPressed()){
       RobotContainer.arm.moveShoulder(0.05);
-    }else{
+    }
+
+    if(RobotContainer.operatorController.getYButtonReleased()){
       RobotContainer.arm.moveShoulder(0);
     }
   }

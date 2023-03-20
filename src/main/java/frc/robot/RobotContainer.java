@@ -34,7 +34,7 @@ public class RobotContainer {
      () -> -driverController.getRawAxis(OIConstants.kDriverYAxis), 
      () -> driverController.getRawAxis(OIConstants.kDriverXAxis), 
      () -> driverController.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !driverController.getAButton()));
+     () -> !driverController.getLeftBumper()));
 
 
 

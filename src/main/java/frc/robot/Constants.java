@@ -26,23 +26,13 @@ public final class Constants {
         public static final int OPERATOR_LX = 0;
         public static final int OPERATOR_RY = 5;
         public static final int OPERATOR_RX = 4;
-    }
-
-    public final class CLAW{
-        public static final int ID = 13;
-        public static final double MAX_SPEED = 0.2;
-        public static final double POSITION_TOLERANCE = 0.002;
-        public static final double CLOSED_POSITION = 0.02;
-        public static final double OPEN_POSITION = 0.3;
-        
-        public static final double kP = 0.8;
-        public static final double kI = 0.8;
-        public static final double kD = 0.05;
+        public static final int OPERATOR_RT = 3;
+        public static final int OPERATOR_LT = 2;
     }
 
     public final class WRIST{
         public static final int ID = 12;
-        public static final double MAX_SPEED = 0.3;
+        public static final double MAX_SPEED = 0.2;
         public static final double POSITION_TOLERANCE = 0.05;
         public static final double UP_POSITION = -9;
         public static final double DOWN_POSITION = 0;
@@ -71,13 +61,10 @@ public final class Constants {
         public static final boolean LEFT_INVERTED = false;
         public static final boolean RIGHT_INVERTED = true;
         public static final double MAX_SPEED = 0.2;
-        public static final double POSITION_TOLERANCE = 0.05;
-        public static final double UP_POSITION = -9;
-        public static final double DOWN_POSITION = 0;
                 
-        public static final double kP = 0;
-        public static final double kI = 0;
-        public static final double kD = 0;
+        public static final double kP = 0.09;
+        public static final double kI = 0.1;
+        public static final double kD = 0.03;
     }
 
     public final class ModuleConstants{
