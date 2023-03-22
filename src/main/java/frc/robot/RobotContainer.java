@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.USB;
 import frc.robot.commands.ArmControl;
-import frc.robot.commands.AutoTest;
 import frc.robot.commands.SwerveJoystick;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.SwerveSubsystem;
