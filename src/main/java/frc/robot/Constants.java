@@ -45,7 +45,7 @@ public final class Constants {
     public final class ELBOW{
         public static final int ID = 11;
         public static final boolean INVERTED = false;
-        public static final double MAX_SPEED = 0.4;
+        public static final double MAX_SPEED = 0.2;
         public static final double POSITION_TOLERANCE = 0.05;
         public static final double UP_POSITION = -9;
         public static final double DOWN_POSITION = 0;
@@ -131,7 +131,7 @@ public final class Constants {
         public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = 5.355;
         public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 1.179;
 
-        public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
+        public static final double kPhysicalMaxSpeedMetersPerSecond = 4.4;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
 
         public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 2;
