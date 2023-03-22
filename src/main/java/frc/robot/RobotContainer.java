@@ -6,12 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.Constants.OIConstants;
-import frc.robot.Constants.USB;
-import frc.robot.commands.ArmControl;
-import frc.robot.commands.SwerveJoystick;
-import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.SwerveSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -21,22 +15,9 @@ import frc.robot.subsystems.SwerveSubsystem;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public final static SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
-  public final static Arm arm = new Arm();
-  public final static ArmControl armControl = new ArmControl(); 
-
-  public final static XboxController driverController = new XboxController(OIConstants.kDriverControllerPort);
-  public final static XboxController operatorController = new XboxController(USB.OPERATOR_CONTROLLER);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    swerveSubsystem.setDefaultCommand(new SwerveJoystick(swerveSubsystem,
-     () -> -driverController.getRawAxis(OIConstants.kDriverYAxis), 
-     () -> driverController.getRawAxis(OIConstants.kDriverXAxis), 
-     () -> driverController.getRawAxis(OIConstants.kDriverRotAxis), 
-     () -> !driverController.getLeftBumper()));
-
-
 
     // Configure the button bindings
     configureBindings();
