@@ -31,14 +31,16 @@ public class ArmControl extends CommandBase {
   @Override
   public void execute() {
     RobotContainer.arm.moveShoulder(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LY) * SHOULDER.MAX_SPEED);
-    RobotContainer.arm.moveWrist(-(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) * WRIST.MAX_SPEED));
-    RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) * -WRIST.MAX_SPEED);
+    //RobotContainer.arm.moveWrist(-(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) * WRIST.MAX_SPEED));
+    //RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) * -WRIST.MAX_SPEED);
     RobotContainer.arm.moveElbow(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RY) * ELBOW.MAX_SPEED);
 
     if(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) > 0.05){
-      RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) * WRIST.MAX_SPEED);
+      RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_LT) * WRIST.MAX_SPEED_DOWN);
     }else if(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) > 0.05){
-      RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) * -WRIST.MAX_SPEED);
+      RobotContainer.arm.moveWrist(RobotContainer.operatorController.getRawAxis(USB.OPERATOR_RT) * -WRIST.MAX_SPEED_UP);
+    }else{
+      RobotContainer.arm.moveWrist(0);
     }
 
     if(RobotContainer.operatorController.getStartButton()){

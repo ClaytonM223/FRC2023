@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
     m_led.start();
 
     CameraServer.startAutomaticCapture(0);
+    CameraServer.startAutomaticCapture(1);
   }
 
   /**

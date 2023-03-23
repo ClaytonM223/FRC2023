@@ -52,11 +52,10 @@ public class Arm extends SubsystemBase {
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Elbow Position", elbowEncoder.getPosition());
-    SmartDashboard.putNumber("Shoulder Position", shoulderEncoder.getPosition());
     SmartDashboard.putNumber("Elbow Temp", elbow.getMotorTemperature());
-    SmartDashboard.putNumber("Wrist Position", wristEncoder.getPosition());
     SmartDashboard.putNumber("Wrist Temp", wrist.getMotorTemperature());
+    SmartDashboard.putNumber("L Shoulder Temp", leftShoulder.getMotorTemperature());
+    SmartDashboard.putNumber("R Shoulder Temp", rightShoulder.getMotorTemperature());
   }
 
   public void shoulderPIDPosition(double position){
@@ -89,7 +88,7 @@ public class Arm extends SubsystemBase {
     if(wristEncoder.getPosition() > position){
       moveWrist(-0.05);
     }else if(wristEncoder.getPosition() < position){
-      moveWrist(WRIST.MAX_SPEED);
+      moveWrist(WRIST.MAX_SPEED_UP);
     }else{
       moveWrist(0);
     }

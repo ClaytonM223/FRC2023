@@ -1,10 +1,13 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.sensors.Pigeon2;
+
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
@@ -50,7 +53,14 @@ public class SwerveSubsystem extends SubsystemBase {
 
     private Pigeon2 gyro = new Pigeon2(Sensors.GYRO_ID);
 
-    
+    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(
+        DriveConstants.kDriveKinematics, new Rotation2d(),
+        new SwerveModulePosition[] {
+          frontLeft.getPosition(),
+          frontRight.getPosition(),
+          backLeft.getPosition(),
+          backRight.getPosition()
+        }, new Pose2d(5.0, 13.5, new Rotation2d()));
 
     public SwerveSubsystem() {
         new Thread(() -> {
@@ -86,17 +96,39 @@ public class SwerveSubsystem extends SubsystemBase {
         return Rotation2d.fromDegrees(getHeading());
     }
 
+    public Pose2d getPose() {
+        return odometer.getPoseMeters();
+    }
+
+    public void resetOdometry(Pose2d pose) {
+        odometer.resetPosition(getRotation2d(), new SwerveModulePosition[] {
+            frontLeft.getPosition(),
+            frontRight.getPosition(),
+            backLeft.getPosition(),
+            backRight.getPosition()
+        }, pose);
+    }
+
     @Override
     public void periodic() {
+        
+        odometer.update(getRotation2d(),
+        new SwerveModulePosition[] {
+            frontLeft.getPosition(),
+            frontRight.getPosition(),
+            backLeft.getPosition(),
+            backRight.getPosition()
+        });
+
         SmartDashboard.putNumber("Robot Heading", getHeading());;
         SmartDashboard.putNumber("Front Left Turn Angle", frontLeft.getAbsoluteEncoderRad());
         SmartDashboard.putNumber("Back Left Turn Angle", backLeft.getAbsoluteEncoderRad());
         SmartDashboard.putNumber("Front Right Turn Angle", frontRight.getAbsoluteEncoderRad());
         SmartDashboard.putNumber("Back Right Turn Angle", backRight.getAbsoluteEncoderRad());
+        SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
         if (RobotContainer.driverController.getBButton()){
             zeroHeading();
         }
-
     }
 
     public void stopModules() {

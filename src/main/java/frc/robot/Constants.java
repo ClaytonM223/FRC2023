@@ -32,7 +32,8 @@ public final class Constants {
 
     public final class WRIST{
         public static final int ID = 12;
-        public static final double MAX_SPEED = 0.2;
+        public static final double MAX_SPEED_UP = 0.3;
+        public static final double MAX_SPEED_DOWN = 0.2;
         public static final double POSITION_TOLERANCE = 0.05;
         public static final double UP_POSITION = -9;
         public static final double DOWN_POSITION = 0;
@@ -134,7 +135,7 @@ public final class Constants {
         public static final double kPhysicalMaxSpeedMetersPerSecond = 4.4;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
 
-        public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 2;
+        public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 1.5;
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
         public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
         public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;
