@@ -18,6 +18,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
+  int r;
+  int g;
+  int b;
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
@@ -30,6 +33,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    r = 255;
+    g = 0;
+    b = 0;
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
@@ -55,6 +61,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
@@ -63,7 +70,7 @@ public class Robot extends TimedRobot {
 
     for (var i = 0; i < m_ledBuffer.getLength(); i++) {
       // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(i, 255, 0, 0);
+      m_ledBuffer.setRGB(i, r, g, b);
    }
    
    m_led.setData(m_ledBuffer);
@@ -72,6 +79,9 @@ public class Robot extends TimedRobot {
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
   public void disabledInit() {
+    r = 255;
+    g = 0;
+    b = 0;
   }
 
   @Override
@@ -82,6 +92,9 @@ public class Robot extends TimedRobot {
   @Override
 
   public void autonomousInit() {
+    r = 0;
+    g = 255;
+    b = 0;
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -96,8 +109,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    RobotContainer.swerveSubsystem.resetTurn();
-
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -105,12 +116,27 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    RobotContainer.swerveSubsystem.resetTurn();
+
+
     RobotContainer.armControl.schedule();
+    r = 255;
+    g = 0;
+    b = 0;
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+    if(RobotContainer.operatorController.getAButton()){
+      r = 0;
+      g = 255;
+      b = 0;
+    }else{
+      r = 255;
+      g = 0;
+      b = 0;
+    }
 
   }
 

@@ -121,10 +121,10 @@ public class SwerveSubsystem extends SubsystemBase {
         });
 
         SmartDashboard.putNumber("Robot Heading", getHeading());;
-        SmartDashboard.putNumber("Front Left Turn Angle", frontLeft.getAbsoluteEncoderRad());
-        SmartDashboard.putNumber("Back Left Turn Angle", backLeft.getAbsoluteEncoderRad());
-        SmartDashboard.putNumber("Front Right Turn Angle", frontRight.getAbsoluteEncoderRad());
-        SmartDashboard.putNumber("Back Right Turn Angle", backRight.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("Front Left Turn Angle", frontLeft.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("Back Left Turn Angle", backLeft.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("Front Right Turn Angle", frontRight.getAbsoluteEncoderRad());
+        //SmartDashboard.putNumber("Back Right Turn Angle", backRight.getAbsoluteEncoderRad());
         SmartDashboard.putString("Robot Location", getPose().getTranslation().toString());
         if (RobotContainer.driverController.getBButton()){
             zeroHeading();
