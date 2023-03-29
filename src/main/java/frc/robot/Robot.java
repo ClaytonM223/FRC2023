@@ -7,7 +7,9 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -33,9 +35,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    r = 255;
-    g = 0;
-    b = 0;
+    if(DriverStation.getAlliance() == Alliance.Blue){
+      r = 0;
+      g = 0;
+      b = 255;
+    }else{
+      r = 255;
+      g = 0;
+      b = 0;
+    }
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
@@ -61,7 +69,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
@@ -79,9 +86,15 @@ public class Robot extends TimedRobot {
   /** This function is called once each time the robot enters Disabled mode. */
   @Override
   public void disabledInit() {
-    r = 255;
-    g = 0;
-    b = 0;
+    if(DriverStation.getAlliance() == Alliance.Blue){
+      r = 0;
+      g = 0;
+      b = 255;
+    }else{
+      r = 255;
+      g = 0;
+      b = 0;
+    }
   }
 
   @Override
@@ -109,6 +122,15 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    if(DriverStation.getAlliance() == Alliance.Blue){
+      r = 0;
+      g = 0;
+      b = 255;
+    }else{
+      r = 255;
+      g = 0;
+      b = 0;
+    }
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -120,9 +142,7 @@ public class Robot extends TimedRobot {
 
 
     RobotContainer.armControl.schedule();
-    r = 255;
-    g = 0;
-    b = 0;
+
   }
 
   /** This function is called periodically during operator control. */
@@ -132,6 +152,10 @@ public class Robot extends TimedRobot {
       r = 0;
       g = 255;
       b = 0;
+    }else if(DriverStation.getAlliance() == Alliance.Blue){
+      r = 0;
+      g = 0;
+      b = 255;
     }else{
       r = 255;
       g = 0;
